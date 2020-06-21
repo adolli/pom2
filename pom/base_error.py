@@ -1,0 +1,3 @@
+
+class PomError(Exception):
+    pass
