@@ -1,5 +1,7 @@
 from abc import ABC
 
+from pom.engine.event import Event
 
-class InputEvent(ABC):
+
+class InputEvent(Event, ABC):
     pass
