@@ -71,16 +71,6 @@ class PomSandbox(Entity):
         pair.move_component.c = self.width // 2
         self.floating = pair
 
-    def move_down(self):
-        if self.floating is not None:
-            self.floating.move_component.r -= 1
-            if self.can_settle():
-                self.settle()
-
-    @property
-    def id(self):
-        return id(self)
-
     def update(self, dt: float):
         pass
 
@@ -90,6 +80,7 @@ class PomSandbox(Entity):
     def print_state(self):
         import copy
         container = copy.deepcopy(self.container)
+        container.append([None for _ in range(self.width)])
         for r, row in enumerate(container):
             for c, pom in enumerate(row):
                 if pom is not None:
@@ -97,6 +88,6 @@ class PomSandbox(Entity):
                 else:
                     container[r][c] = " "
         f = self.floating.move_component
-        container[f.r][f.c] = "F"
-        container[f.r + 1][f.c] = "F"
+        container[int(f.r)][int(f.c)] = "F"
+        container[int(f.r + 1)][int(f.c)] = "F"
         pprint(list(reversed(container)))

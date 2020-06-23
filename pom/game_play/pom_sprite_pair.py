@@ -9,10 +9,6 @@ class PomSpritePair(Entity):
         self.move_component = MoveComponent(0, 0)
         self.sprites = [p1, p2]
 
-    @property
-    def id(self):
-        return id(self)
-
     def update(self, dt: float):
         pass
 
