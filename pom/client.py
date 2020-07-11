@@ -1,5 +1,6 @@
 import time
 
+from pom.display.debug_console import DebugConsole
 from pom.game_play.move_component import MoveComponent
 from pom.game_play.world import World
 from pom.game_play.game_event import PomMoveDownEvent
@@ -23,6 +24,9 @@ if __name__ == '__main__':
     # down2 = PomMoveDownEvent(sandbox)
     # world.event_system.send(down)
     # world.event_system.send(down2)
+
+    display = DebugConsole()
+    world.set_display_device(display)
 
     world.on_start()
     for i in range(10):

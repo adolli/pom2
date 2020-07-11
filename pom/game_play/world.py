@@ -1,11 +1,12 @@
 import traceback
 from _weakref import ReferenceType
 from collections import defaultdict
-from typing import Dict, Set
+from typing import Dict, Set, Optional
 
 import six
 import time
 
+from pom.display.display_device import DisplayDevice
 from pom.engine.component import ComponentRegistry
 from pom.engine.entity import Entity, EntityRegistry
 from pom.engine.event_system import EventSystem
@@ -24,6 +25,7 @@ class World(object):
         self.move_system = MoveSystem()
         self.event_system = EventSystem()
         self.pom_control_system = PomControlSystem(self.event_system)
+        self.display_device: Optional[DisplayDevice] = None
         self._prev_ts = 0
 
     def on_start(self):
@@ -47,3 +49,6 @@ class World(object):
                 e.update(dt)
             except Exception as e:
                 traceback.print_exc()
+
+    def set_display_device(self, d):
+        self.display_device = d
