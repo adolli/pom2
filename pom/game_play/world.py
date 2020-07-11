@@ -11,7 +11,7 @@ from pom.engine.entity import Entity, EntityRegistry
 from pom.engine.event_system import EventSystem
 from pom.game_play.move_component import MoveComponent
 from pom.game_play.pom_control import PomControlSystem
-from pom.game_play.systems.MoveSystem import MoveSystem
+from pom.game_play.systems.move_system import MoveSystem
 from pom.utils.singleton import Singleton
 
 
@@ -25,6 +25,9 @@ class World(object):
         self.event_system = EventSystem()
         self.pom_control_system = PomControlSystem(self.event_system)
         self._prev_ts = 0
+
+    def on_start(self):
+        self._prev_ts = time.time()
 
     def on_frame(self):
         # refresh components

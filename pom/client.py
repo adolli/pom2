@@ -24,7 +24,7 @@ if __name__ == '__main__':
     # world.event_system.send(down)
     # world.event_system.send(down2)
 
-
+    world.on_start()
     for i in range(10):
         time.sleep(0.033)  # 只用10 frames做测试
         world.on_frame()

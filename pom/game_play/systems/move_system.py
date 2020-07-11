@@ -8,7 +8,8 @@ class MoveSystem(object):
         super(MoveSystem, self).__init__()
 
     def update_components(self, dt: float, components: Iterable[MoveComponent]):
+        print(dt)
         for com in components:
-            vc, vr = com.velocity
+            vr, vc = com.velocity
             com.c += dt * vc
             com.r += dt * vr
